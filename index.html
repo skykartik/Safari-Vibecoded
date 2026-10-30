@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: file: https: http:; connect-src 'self' https: http:; font-src 'self' data:; frame-src https: http: about:; media-src 'self' blob: data:">
+<title>Safari</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="platform-win">
+
+<!-- =====================================================================
+     SVG ICON SPRITE  (use: <svg class="icon"><use href="#i-name"/></svg>)
+     ===================================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-sidebar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M9.5 5v14"/></symbol>
+    <symbol id="i-chev-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-chev-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-chev-up" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 2.8v5.6c0 4.3-2.9 7.9-7 9.6-4.1-1.7-7-5.3-7-9.6V5.8L12 3z"/><path d="M9 12l2.2 2.2L15.5 10"/></symbol>
+    <symbol id="i-reader" viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-reload" viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M6 11h-.5A1.5 1.5 0 0 0 4 12.5v6A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5v-6a1.5 1.5 0 0 0-1.5-1.5H18"/></symbol>
+    <symbol id="i-overview" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 6v9.5M8 12l4 4 4-4"/><path d="M5 19.5h14"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="6" y="10.5" width="12" height="9.5" rx="2" fill="currentColor" stroke="none"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></symbol>
+    <symbol id="i-speaker" viewBox="0 0 24 24"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M17.8 6.5a7.5 7.5 0 0 1 0 11"/></symbol>
+    <symbol id="i-speaker-mute" viewBox="0 0 24 24"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.9 6.8 19.7l1-5.9L3.5 9.7l5.9-.8L12 3.5z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5C10.5 5 8 4.5 4 4.5v13c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2v-13c-4 0-6.5.5-8 2z"/><path d="M12 6.5v13"/></symbol>
+    <symbol id="i-glasses" viewBox="0 0 24 24"><circle cx="6.5" cy="14.5" r="3.5"/><circle cx="17.5" cy="14.5" r="3.5"/><path d="M10 14.5h4M3 14.5L5 7h3M21 14.5L19 7h-3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-stack" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="2.5"/><path d="M7 6h10M9.5 3h5"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3.5 7.5a2 2 0 0 1 2-2H10l2 2.5h6.5a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2V7.5z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4.5 7h15M9.5 7V4.5h5V7M6.5 7l.8 12.5h9.4L17.5 7M10 11v5M14 11v5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M9 4h6l-1 6 3 3.5H7L10 10 9 4z"/><path d="M12 13.5V20"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-ellipsis" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.7" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/><circle cx="18.5" cy="12" r="1.7" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2"/><path d="M15.5 8.5v-2a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4 7.5l8 6 8-6"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V4h10v5M7 17H5.5A1.5 1.5 0 0 1 4 15.5v-5A1.5 1.5 0 0 1 5.5 9h13a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17"/><rect x="7" y="14" width="10" height="6" rx="1"/></symbol>
+    <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M6.5 3.5h7L19 9v10.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 19.5v-14a2 2 0 0 1 1.5-2z"/><path d="M13.5 3.5V9H19M8.5 15h7M8.5 18h4"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="M8.5 7l-5 5 5 5M15.5 7l5 5-5 5"/></symbol>
+    <symbol id="i-newwin" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M12 9v6M9 12h6"/></symbol>
+    <symbol id="i-open" viewBox="0 0 24 24"><path d="M9 5H6.5A2.5 2.5 0 0 0 4 7.5v10A2.5 2.5 0 0 0 6.5 20h10a2.5 2.5 0 0 0 2.5-2.5V15M13 4h7v7M20 4l-9 9"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20l1-4L16.5 4.5a2 2 0 0 1 2.8 0l.2.2a2 2 0 0 1 0 2.8L8 19l-4 1z"/></symbol>
+    <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-4.5 3.5 3L15 13l5 4.5"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5L8 5.5z"/></symbol>
+    <symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 4l9 16H3L12 4z"/><path d="M12 10v4.5M12 17.4v.1"/></symbol>
+  </defs>
+</svg>
+
+<!-- =====================================================================
+     APP SHELL
+     Classes toggled on #app by renderer.js:
+       layout-separate | layout-compact · sidebar-open · window-blurred · maximized · fullscreen
+       start-visible · overview-open · reader-open · tint-dark | tint-light · html-fullscreen
+     ===================================================================== -->
+<div id="app" class="app layout-separate">
+
+  <!-- ============================ TOOLBAR ============================ -->
+  <header id="toolbar" class="toolbar tintable">
+
+    <!-- Left cluster -->
+    <div class="tb-left">
+      <div id="traffic-lights" class="traffic-lights no-drag">
+        <button id="tl-close" class="tl tl-close" aria-label="Close" tabindex="-1">
+          <svg class="tl-glyph" viewBox="0 0 8 8"><path d="M1.5 1.5l5 5M6.5 1.5l-5 5"/></svg>
+        </button>
+        <button id="tl-min" class="tl tl-min" aria-label="Minimize" tabindex="-1">
+          <svg class="tl-glyph" viewBox="0 0 8 8"><path d="M1.2 4h5.6"/></svg>
+        </button>
+        <button id="tl-max" class="tl tl-max" aria-label="Full Screen" tabindex="-1">
+          <svg class="tl-glyph" viewBox="0 0 8 8"><path d="M1 1h4.2L1 5.2V1zM7 7H2.8L7 2.8V7z"/></svg>
+        </button>
+      </div>
+
+      <div class="tb-group no-drag">
+        <button id="btn-sidebar" class="tb-btn" title="Show Sidebar (Ctrl+Shift+L)" aria-label="Toggle Sidebar"><svg class="icon"><use href="#i-sidebar"/></svg></button>
+        <button id="btn-groups" class="tb-btn tb-chev" title="Tab Groups" aria-label="Tab Groups"><svg class="icon sm"><use href="#i-chev-down"/></svg></button>
+      </div>
+
+      <div class="tb-group no-drag">
+        <button id="btn-back" class="tb-btn" title="Back (Alt+Left) — hold for history" aria-label="Back" disabled><svg class="icon lg"><use href="#i-chev-left"/></svg></button>
+        <button id="btn-forward" class="tb-btn" title="Forward (Alt+Right) — hold for history" aria-label="Forward" disabled><svg class="icon lg"><use href="#i-chev-right"/></svg></button>
+      </div>
+    </div>
+
+    <!-- Center cluster: compact tabs + Smart Search Field -->
+    <div class="tb-center">
+      <div id="compact-tabs-left" class="compact-tabs left no-drag" role="tablist"></div>
+
+      <div class="sf-wrap">
+        <div id="smart-field" class="smart-field no-drag">
+          <div id="sf-progress" class="sf-progress"></div>
+
+          <div class="sf-left">
+            <button id="btn-privacy" class="sf-btn" title="Privacy Report" aria-label="Privacy Report">
+              <svg class="icon sm"><use href="#i-shield"/></svg>
+              <span id="privacy-count" class="sf-count" hidden>0</span>
+            </button>
+            <button id="btn-reader" class="sf-btn" title="Show Reader View (Ctrl+Shift+R)" aria-label="Reader View" hidden>
+              <svg class="icon sm"><use href="#i-reader"/></svg>
+            </button>
+          </div>
+
+          <div class="sf-center">
+            <span id="sf-lock" class="sf-lock" hidden title="Connection is secure"><svg class="icon xs"><use href="#i-lock"/></svg></span>
+            <span id="sf-notsecure" class="sf-notsecure" hidden>Not Secure</span>
+            <input id="address-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off"
+                   placeholder="Search or enter website name" aria-label="Smart Search Field">
+            <span id="zoom-badge" class="zoom-badge">100%</span>
+          </div>
+
+          <div class="sf-right">
+            <button id="btn-add" class="sf-btn" title="Add Bookmark or Reading List item (Ctrl+D)" aria-label="Add Bookmark"><svg class="icon sm"><use href="#i-plus"/></svg></button>
+            <button id="btn-reload" class="sf-btn morph" title="Reload Page (Ctrl+R)" aria-label="Reload">
+              <svg class="icon sm i-reload"><use href="#i-reload"/></svg>
+              <svg class="icon sm i-stop"><use href="#i-stop"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="compact-tabs-right" class="compact-tabs right no-drag" role="tablist"></div>
+    </div>
+
+    <!-- Right cluster -->
+    <div class="tb-right no-drag">
+      <button id="btn-downloads" class="tb-btn dl-btn" title="Show Downloads (Ctrl+J)" aria-label="Downloads" hidden>
+        <svg class="dl-ring" viewBox="0 0 24 24">
+          <circle class="dl-ring-bg" cx="12" cy="12" r="9"/>
+          <circle id="dl-ring-fg" class="dl-ring-fg" cx="12" cy="12" r="9" stroke-dasharray="56.55" stroke-dashoffset="56.55"/>
+        </svg>
+        <svg class="icon sm dl-arrow"><use href="#i-download"/></svg>
+      </button>
+      <button id="btn-share" class="tb-btn" title="Share" aria-label="Share"><svg class="icon"><use href="#i-share"/></svg></button>
+      <button id="btn-newtab" class="tb-btn" title="New Tab (Ctrl+T)" aria-label="New Tab"><svg class="icon"><use href="#i-plus"/></svg></button>
+      <button id="btn-overview" class="tb-btn" title="Show Tab Overview (Ctrl+Shift+\)" aria-label="Tab Overview"><svg class="icon"><use href="#i-overview"/></svg></button>
+    </div>
+  </header>
+
+  <!-- ============================== MAIN ============================== -->
+  <div id="main" class="main">
+
+    <!-- ----------------------------- SIDEBAR ----------------------------- -->
+    <aside id="sidebar" class="sidebar no-drag" aria-label="Sidebar">
+      <div class="sb-inner">
+        <div class="sb-tabs" role="tablist">
+          <button class="sb-tab active" data-section="tabgroups" title="Tab Groups" role="tab"><svg class="icon"><use href="#i-stack"/></svg></button>
+          <button class="sb-tab" data-section="bookmarks" title="Bookmarks &amp; Favorites" role="tab"><svg class="icon"><use href="#i-book"/></svg></button>
+          <button class="sb-tab" data-section="reading" title="Reading List" role="tab"><svg class="icon"><use href="#i-glasses"/></svg></button>
+          <button class="sb-tab" data-section="history" title="History (Ctrl+H)" role="tab"><svg class="icon"><use href="#i-clock"/></svg></button>
+        </div>
+
+        <div class="sb-body">
+          <section id="sb-tabgroups" class="sb-section active" data-section="tabgroups">
+            <div class="sb-head"><h2>Tab Groups</h2><button id="btn-new-group" class="icon-btn" title="New Tab Group" aria-label="New Tab Group"><svg class="icon sm"><use href="#i-plus"/></svg></button></div>
+            <div id="groups-list" class="sb-list"></div>
+          </section>
+
+          <section id="sb-bookmarks" class="sb-section" data-section="bookmarks">
+            <div class="sb-head"><h2>Bookmarks</h2><button id="btn-new-folder" class="icon-btn" title="New Folder" aria-label="New Folder"><svg class="icon sm"><use href="#i-folder"/></svg></button></div>
+            <div id="bookmarks-list" class="sb-list"></div>
+          </section>
+
+          <section id="sb-reading" class="sb-section" data-section="reading">
+            <div class="sb-head"><h2>Reading List</h2></div>
+            <div class="sb-search"><svg class="icon xs"><use href="#i-search"/></svg><input id="reading-search" type="search" placeholder="Search Reading List" spellcheck="false"></div>
+            <div id="reading-filter" class="segmented sb-seg">
+              <button data-filter="unread">Unread</button>
+              <button data-filter="all" class="active">All</button>
+            </div>
+            <div id="reading-list" class="sb-list"></div>
+          </section>
+
+          <section id="sb-history" class="sb-section" data-section="history">
+            <div class="sb-head"><h2>History</h2><button id="btn-clear-history" class="btn small" title="Clear History…">Clear…</button></div>
+            <div class="sb-search"><svg class="icon xs"><use href="#i-search"/></svg><input id="history-search" type="search" placeholder="Search History" spellcheck="false"></div>
+            <div id="history-list" class="sb-list"></div>
+          </section>
+        </div>
+
+        <div class="sb-foot">
+          <button id="btn-settings" class="icon-btn" title="Settings (Ctrl+,)" aria-label="Settings"><svg class="icon"><use href="#i-gear"/></svg></button>
+          <span class="sb-foot-label">Safari for Windows</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ----------------------------- CONTENT ----------------------------- -->
+    <section id="content" class="content">
+
+      <!-- Separate tab bar (hidden in compact layout) -->
+      <div id="tabbar" class="tabbar tintable no-drag" role="tablist">
+        <div id="pinned-tabs" class="pinned-tabs"></div>
+        <div id="tabs" class="tabs"></div>
+        <button id="btn-tabbar-new" class="tb-btn tabbar-new" title="New Tab" aria-label="New Tab"><svg class="icon sm"><use href="#i-plus"/></svg></button>
+      </div>
+
+      <div id="viewport" class="viewport">
+        <!-- <webview class="wv" partition="persist:safari"> elements are created here by renderer.js -->
+        <div id="webviews" class="webviews"></div>
+
+        <!-- Start Page (safari://start) -->
+        <div id="start-page" class="start-page">
+          <div id="start-bg" class="start-bg" data-bg="sequoia"></div>
+          <div class="start-scroll">
+            <div class="start-inner">
+              <section id="sp-favorites" class="sp-section">
+                <h2 class="sp-title">Favorites</h2>
+                <div id="fav-grid" class="fav-grid"></div>
+              </section>
+
+              <section id="sp-privacy" class="sp-section">
+                <h2 class="sp-title">Privacy Report</h2>
+                <div class="glass-card privacy-banner" id="sp-privacy-card" role="button" tabindex="0">
+                  <svg class="icon pb-icon"><use href="#i-shield"/></svg>
+                  <p class="pb-text">In the last seven days, Safari has prevented <strong id="sp-tracker-count">0</strong> trackers from profiling you.</p>
+                  <svg class="icon sm pb-chev"><use href="#i-chev-right"/></svg>
+                </div>
+              </section>
+
+              <section id="sp-reading" class="sp-section">
+                <h2 class="sp-title">Reading List</h2>
+                <div id="sp-reading-grid" class="reading-grid"></div>
+              </section>
+
+              <section id="sp-recent" class="sp-section">
+                <h2 class="sp-title">Recently Closed Tabs</h2>
+                <div id="sp-recent-list" class="pill-row"></div>
+              </section>
+            </div>
+          </div>
+          <button id="btn-customize" class="customize-btn" title="Customize Start Page" aria-label="Customize Start Page"><svg class="icon"><use href="#i-sliders"/></svg></button>
+        </div>
+
+        <!-- Load error / blocked page -->
+        <div id="error-view" class="error-view" hidden>
+          <div class="error-card">
+            <svg class="icon error-icon"><use href="#i-warning"/></svg>
+            <h1 id="error-title">Safari Can’t Open the Page</h1>
+            <p id="error-message">The server can’t be found.</p>
+            <p id="error-url" class="error-url"></p>
+            <div class="error-actions"><button id="btn-error-retry" class="btn primary">Try Again</button></div>
+          </div>
+        </div>
+
+        <!-- Find on Page -->
+        <div id="findbar" class="findbar no-drag" role="search">
+          <svg class="icon xs"><use href="#i-search"/></svg>
+          <input id="find-input" type="text" placeholder="Find on Page" spellcheck="false" autocomplete="off">
+          <span id="find-count" class="find-count"></span>
+          <button id="find-prev" class="icon-btn" title="Previous (Ctrl+Shift+G)" aria-label="Previous Match"><svg class="icon sm"><use href="#i-chev-up"/></svg></button>
+          <button id="find-next" class="icon-btn" title="Next (Ctrl+G)" aria-label="Next Match"><svg class="icon sm"><use href="#i-chev-down"/></svg></button>
+          <button id="find-done" class="btn small">Done</button>
+        </div>
+
+        <div id="link-status" class="link-status"></div>
+
+        <!-- Reader View -->
+        <div id="reader" class="reader no-drag" data-theme="white" data-font="system" aria-hidden="true">
+          <div class="reader-bar">
+            <button id="btn-reader-close" class="btn small" title="Exit Reader (Esc)">Done</button>
+            <button id="btn-reader-aa" class="btn small aa-btn" title="Reader Appearance" aria-label="Reader Appearance"><span>A</span><span class="aa-big">A</span></button>
+          </div>
+          <div id="reader-scroll" class="reader-scroll">
+            <article id="reader-article" class="reader-article">
+              <h1 id="reader-title"></h1>
+              <div id="reader-meta" class="reader-meta"></div>
+              <figure id="reader-lead-wrap" class="reader-lead" hidden><img id="reader-lead" alt=""></figure>
+              <div id="reader-body" class="reader-body"></div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- Docked Web Inspector (webview partition="safari-devtools" is created inside #devtools-host) -->
+      <div id="devtools-dock" class="devtools-dock no-drag" hidden>
+        <div id="devtools-resizer" class="devtools-resizer"></div>
+        <div id="devtools-host" class="devtools-host"></div>
+      </div>
+
+      <!-- Tab Overview -->
+      <div id="overview" class="overview no-drag" aria-hidden="true">
+        <div class="overview-top">
+          <div class="overview-search"><svg class="icon xs"><use href="#i-search"/></svg><input id="overview-search" type="search" placeholder="Search Tabs" spellcheck="false" autocomplete="off"></div>
+          <span id="overview-group" class="overview-group"></span>
+          <button id="btn-overview-new" class="icon-btn lg" title="New Tab" aria-label="New Tab"><svg class="icon"><use href="#i-plus"/></svg></button>
+          <button id="btn-overview-done" class="btn small">Done</button>
+        </div>
+        <div id="overview-grid" class="overview-grid"></div>
+        <p id="overview-empty" class="overview-empty" hidden>No matching tabs</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- =====================================================================
+     POPOVERS  (positioned + toggled with .open by renderer.js)
+     ===================================================================== -->
+
+<!-- Smart Search & Favorites -->
+<div id="pop-suggestions" class="popover sugg-pop" role="listbox">
+  <div id="sugg-favorites" class="sugg-favs"></div>
+  <div id="sugg-list" class="sugg-list"></div>
+</div>
+
+<!-- Privacy Report -->
+<div id="pop-privacy" class="popover pop-privacy">
+  <div class="pp-head">
+    <svg class="icon lg pp-icon"><use href="#i-shield"/></svg>
+    <div>
+      <div id="pp-title" class="pp-title">Privacy Report</div>
+      <div id="pp-sub" class="pp-sub"></div>
+    </div>
+  </div>
+  <div class="pp-stat"><span id="pp-page-count" class="pp-big">0</span><span class="pp-stat-label">trackers prevented from profiling you on this page</span></div>
+  <div id="pp-trackers" class="pp-list"></div>
+  <div class="pp-divider"></div>
+  <div class="pp-stat small"><span id="pp-week-count" class="pp-mid">0</span><span class="pp-stat-label">trackers prevented in the last seven days</span></div>
+  <div id="pp-sites" class="pp-list"></div>
+  <label class="switch-row pp-toggle"><span>Block trackers on this website</span><span class="switch"><input type="checkbox" id="pp-site-toggle"><i></i></span></label>
+</div>
+
+<!-- Share -->
+<div id="pop-share" class="popover menu-pop">
+  <div class="menu-item" id="share-copy"><svg class="icon sm"><use href="#i-copy"/></svg><span>Copy Link</span></div>
+  <div class="menu-item" id="share-bookmark"><svg class="icon sm"><use href="#i-book"/></svg><span>Add to Bookmarks…</span></div>
+  <div class="menu-item" id="share-reading"><svg class="icon sm"><use href="#i-glasses"/></svg><span>Add to Reading List</span></div>
+  <div class="menu-sep"></div>
+  <div class="menu-item" id="share-pdf"><svg class="icon sm"><use href="#i-pdf"/></svg><span>Save Page as PDF…</span></div>
+  <div class="menu-item" id="share-print"><svg class="icon sm"><use href="#i-print"/></svg><span>Print…</span></div>
+  <div class="menu-item" id="share-email"><svg class="icon sm"><use href="#i-mail"/></svg><span>Email Link</span></div>
+  <div class="menu-sep"></div>
+  <div class="menu-item" id="share-source"><svg class="icon sm"><use href="#i-code"/></svg><span>View Page Source</span></div>
+  <div class="menu-item" id="share-inspector"><svg class="icon sm"><use href="#i-gear"/></svg><span>Show Web Inspector</span><span class="kbd">F12</span></div>
+</div>
+
+<!-- Downloads -->
+<div id="pop-downloads" class="popover pop-downloads">
+  <div class="dl-head"><strong>Downloads</strong><button id="btn-clear-downloads" class="btn small">Clear</button></div>
+  <div id="downloads-list" class="dl-list"></div>
+  <p id="downloads-empty" class="dl-empty">No Downloads</p>
+</div>
+
+<!-- Add Bookmark / Reading List (Ctrl+D) -->
+<div id="pop-bookmark" class="popover pop-bookmark">
+  <div id="bm-kind" class="segmented">
+    <button data-kind="bookmark" class="active">Bookmark</button>
+    <button data-kind="reading">Reading List</button>
+    <button data-kind="favorite">Favorite</button>
+  </div>
+  <div class="bm-row"><img id="bm-icon" class="bm-icon" alt=""><input id="bm-title" class="input" type="text" spellcheck="false" placeholder="Title"></div>
+  <label class="bm-row" id="bm-folder-row"><span class="bm-label">Add to</span>
+    <select id="bm-folder" class="input"></select>
+  </label>
+  <div class="bm-actions"><button id="bm-cancel" class="btn">Cancel</button><button id="bm-add" class="btn primary">Add</button></div>
+</div>
+
+<!-- Back / Forward history stack -->
+<div id="pop-navstack" class="popover menu-pop navstack-pop"><div id="navstack-list"></div></div>
+
+<!-- Tab Group switcher (chevron next to the sidebar button) -->
+<div id="pop-groups" class="popover menu-pop">
+  <div id="groups-menu-list"></div>
+  <div class="menu-sep"></div>
+  <div class="menu-item" id="groups-menu-new"><svg class="icon sm"><use href="#i-plus"/></svg><span>New Empty Tab Group</span></div>
+</div>
+
+<!-- Reader typography (Aa) -->
+<div id="pop-reader" class="popover pop-reader">
+  <div class="rt-size">
+    <button id="reader-smaller" class="rt-btn small-a" aria-label="Smaller">A</button>
+    <span class="rt-sep"></span>
+    <button id="reader-larger" class="rt-btn big-a" aria-label="Larger">A</button>
+  </div>
+  <div id="reader-themes" class="rt-themes">
+    <button data-reader-theme="white" class="rt-theme white active" aria-label="White"></button>
+    <button data-reader-theme="sepia" class="rt-theme sepia" aria-label="Sepia"></button>
+    <button data-reader-theme="gray" class="rt-theme gray" aria-label="Gray"></button>
+    <button data-reader-theme="night" class="rt-theme night" aria-label="Night"></button>
+  </div>
+  <div id="reader-fonts" class="rt-fonts">
+    <button data-reader-font="system" class="rt-font active" style="font-family:var(--font)">San Francisco</button>
+    <button data-reader-font="serif" class="rt-font" style="font-family:'New York','Iowan Old Style',Georgia,serif">New York</button>
+    <button data-reader-font="charter" class="rt-font" style="font-family:Charter,'Bitstream Charter','Sitka Text',Cambria,serif">Charter</button>
+    <button data-reader-font="mono" class="rt-font" style="font-family:var(--font-mono)">SF Mono</button>
+  </div>
+</div>
+
+<!-- Start Page customization -->
+<div id="pop-customize" class="popover pop-customize">
+  <div class="cz-title">Customize Start Page</div>
+  <label class="switch-row"><span>Favorites</span><span class="switch"><input type="checkbox" id="sw-favorites"><i></i></span></label>
+  <label class="switch-row"><span>Privacy Report</span><span class="switch"><input type="checkbox" id="sw-privacy"><i></i></span></label>
+  <label class="switch-row"><span>Reading List</span><span class="switch"><input type="checkbox" id="sw-reading"><i></i></span></label>
+  <label class="switch-row"><span>Recently Closed Tabs</span><span class="switch"><input type="checkbox" id="sw-recent"><i></i></span></label>
+  <div class="menu-sep"></div>
+  <div class="cz-subtitle">Background Image</div>
+  <div id="bg-grid" class="bg-grid">
+    <button class="bg-swatch" data-bg="sequoia" title="Sequoia"></button>
+    <button class="bg-swatch" data-bg="sonoma" title="Sonoma"></button>
+    <button class="bg-swatch" data-bg="ventura" title="Ventura"></button>
+    <button class="bg-swatch" data-bg="monterey" title="Monterey"></button>
+    <button class="bg-swatch" data-bg="bigsur" title="Big Sur"></button>
+    <button class="bg-swatch" data-bg="graphite" title="Graphite"></button>
+    <button id="btn-bg-upload" class="bg-swatch bg-upload" title="Choose Image…"><svg class="icon"><use href="#i-photo"/></svg></button>
+  </div>
+</div>
+
+<!-- Clear History… -->
+<div id="pop-clear-history" class="popover menu-pop">
+  <div class="menu-title">Clear History</div>
+  <div class="menu-item" data-clear="hour">The last hour</div>
+  <div class="menu-item" data-clear="today">Today</div>
+  <div class="menu-item" data-clear="today-yesterday">Today and yesterday</div>
+  <div class="menu-item danger" data-clear="all">All history</div>
+</div>
+
+<!-- Tab hover preview card -->
+<div id="tab-preview" class="tab-preview" aria-hidden="true">
+  <div class="tp-thumb"><img id="tp-img" alt=""><div id="tp-placeholder" class="tp-placeholder"></div></div>
+  <div id="tp-title" class="tp-title"></div>
+  <div id="tp-domain" class="tp-domain"></div>
+</div>
+
+<!-- Generic context menu (items built by renderer.js: .menu-item / .menu-sep / .has-sub / .disabled / .checked) -->
+<div id="ctx-menu" class="menu"></div>
+<div id="ctx-submenu" class="menu submenu"></div>
+
+<!-- =====================================================================
+     SHEETS / MODALS
+     ===================================================================== -->
+
+<!-- Settings -->
+<div id="settings" class="modal-scrim" aria-hidden="true">
+  <div class="sheet settings-sheet" role="dialog" aria-label="Settings">
+    <div class="sheet-head"><h2>Settings</h2><button id="btn-settings-close" class="icon-btn" aria-label="Close"><svg class="icon sm"><use href="#i-stop"/></svg></button></div>
+    <div class="sheet-body">
+      <div class="set-group">
+        <div class="set-row"><span class="set-label">Appearance</span>
+          <div id="set-theme" class="segmented"><button data-value="light">Light</button><button data-value="dark">Dark</button><button data-value="system">System</button></div></div>
+        <div class="set-row"><span class="set-label">Tab layout</span>
+          <div id="set-tablayout" class="segmented"><button data-value="separate">Separate</button><button data-value="compact">Compact</button></div></div>
+        <label class="set-row"><span class="set-label">Show color in compact tab bar</span><span class="switch"><input type="checkbox" id="set-colortab"><i></i></span></label>
+        <div class="set-row"><span class="set-label">Window material</span>
+          <select id="set-material" class="input"><option value="none">None</option><option value="mica">Mica</option><option value="acrylic">Acrylic</option><option value="tabbed">Mica Alt</option></select></div>
+      </div>
+      <div class="set-group">
+        <div class="set-row"><span class="set-label">Search engine</span>
+          <select id="set-engine" class="input"></select></div>
+        <div class="set-row"><span class="set-label">Homepage</span>
+          <input id="set-homepage" class="input" type="text" spellcheck="false" placeholder="safari://start"></div>
+        <div class="set-row"><span class="set-label">Save downloads to</span>
+          <span class="set-inline"><span id="set-downloads-path" class="set-path"></span><button id="btn-choose-downloads" class="btn small">Choose…</button></span></div>
+      </div>
+      <div class="set-group">
+        <label class="set-row"><span class="set-label">Prevent cross-site tracking<small>Block known advertising and tracking domains</small></span><span class="switch"><input type="checkbox" id="set-blocktrackers"><i></i></span></label>
+        <div class="set-row"><span class="set-label">Website data</span>
+          <span class="set-inline"><button id="btn-clear-cache" class="btn small">Clear Cache</button><button id="btn-clear-website-data" class="btn small">Remove All Website Data…</button></span></div>
+        <div class="set-row"><span class="set-label">Privacy Report</span>
+          <button id="btn-reset-privacy" class="btn small">Reset Tracker Counts</button></div>
+      </div>
+      <p id="set-about" class="set-about"></p>
+    </div>
+  </div>
+</div>
+
+<!-- View Page Source -->
+<div id="viewsource" class="modal-scrim" aria-hidden="true">
+  <div class="sheet wide" role="dialog" aria-label="Page Source">
+    <div class="sheet-head"><div><h2 id="vs-title">Page Source</h2><div id="vs-url" class="sheet-sub"></div></div>
+      <div class="sheet-head-actions"><button id="vs-copy" class="btn small">Copy</button><button id="vs-close" class="icon-btn" aria-label="Close"><svg class="icon sm"><use href="#i-stop"/></svg></button></div></div>
+    <pre id="vs-code" class="code"></pre>
+  </div>
+</div>
+
+<!-- HTTP authentication -->
+<div id="auth-sheet" class="modal-scrim" aria-hidden="true">
+  <div class="sheet auth-sheet" role="dialog" aria-label="Sign In">
+    <div class="auth-body">
+      <svg class="icon lg"><use href="#i-lock"/></svg>
+      <h3 id="auth-title">Sign in to “example.com”</h3>
+      <p id="auth-sub" class="sheet-sub">Your login information will be sent securely.</p>
+      <input id="auth-user" class="input" type="text" placeholder="User Name" spellcheck="false" autocomplete="off">
+      <input id="auth-pass" class="input" type="password" placeholder="Password" autocomplete="off">
+      <div class="bm-actions"><button id="auth-cancel" class="btn">Cancel</button><button id="auth-ok" class="btn primary">Sign In</button></div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- =====================================================================
+     TEMPLATES (cloned by renderer.js)
+     ===================================================================== -->
+
+<template id="tpl-tab">
+  <div class="tab" role="tab" draggable="true">
+    <button class="tab-close" aria-label="Close Tab" tabindex="-1"><svg class="icon xs"><use href="#i-stop"/></svg></button>
+    <span class="tab-body">
+      <span class="tab-favicon"></span>
+      <span class="tab-spinner"></span>
+      <span class="tab-title"></span>
+    </span>
+    <button class="tab-audio" aria-label="Mute Tab" tabindex="-1"><svg class="icon xs"><use href="#i-speaker"/></svg></button>
+  </div>
+</template>
+
+<template id="tpl-fav">
+  <a class="fav-card" tabindex="0" role="link">
+    <span class="fav-icon"></span>
+    <span class="fav-title"></span>
+    <button class="fav-remove" aria-label="Remove from Favorites" tabindex="-1"><svg class="icon xs"><use href="#i-stop"/></svg></button>
+  </a>
+</template>
+
+<template id="tpl-fav-add">
+  <a class="fav-card add" tabindex="0" role="button">
+    <span class="fav-icon"><svg class="icon lg"><use href="#i-plus"/></svg></span>
+    <span class="fav-title">Add Favorite</span>
+  </a>
+</template>
+
+<template id="tpl-sp-reading">
+  <div class="reading-card glass-card" tabindex="0" role="link">
+    <div class="rc-thumb"></div>
+    <div class="rc-body"><div class="rc-title"></div><div class="rc-domain"></div><div class="rc-excerpt"></div></div>
+  </div>
+</template>
+
+<template id="tpl-pill">
+  <button class="pill glass-card"><span class="pill-ico"></span><span class="pill-title"></span></button>
+</template>
+
+<template id="tpl-sb-row">
+  <div class="sb-row" tabindex="0">
+    <span class="sb-ico"></span>
+    <span class="sb-text"><span class="sb-title"></span><span class="sb-sub"></span></span>
+    <span class="sb-badge"></span>
+    <span class="sb-actions">
+      <button class="icon-btn sb-edit" title="Rename" aria-label="Rename"><svg class="icon xs"><use href="#i-pencil"/></svg></button>
+      <button class="icon-btn sb-del" title="Delete" aria-label="Delete"><svg class="icon xs"><use href="#i-trash"/></svg></button>
+    </span>
+  </div>
+</template>
+
+<template id="tpl-sb-reading">
+  <div class="sb-row sb-reading" tabindex="0">
+    <span class="sb-thumb"></span>
+    <span class="sb-text"><span class="sb-title"></span><span class="sb-sub"></span><span class="sb-excerpt"></span></span>
+    <span class="sb-actions">
+      <button class="icon-btn sb-read" title="Mark as Read/Unread" aria-label="Toggle Read"><svg class="icon xs"><use href="#i-check"/></svg></button>
+      <button class="icon-btn sb-del" title="Remove" aria-label="Remove"><svg class="icon xs"><use href="#i-trash"/></svg></button>
+    </span>
+  </div>
+</template>
+
+<template id="tpl-sb-header"><div class="sb-header"></div></template>
+<template id="tpl-sb-empty"><div class="sb-empty"></div></template>
+
+<template id="tpl-sugg-header"><div class="sugg-header"></div></template>
+<template id="tpl-sugg-row">
+  <div class="sugg-row" role="option"><span class="sugg-ico"></span><span class="sugg-main"></span><span class="sugg-sub"></span></div>
+</template>
+
+<template id="tpl-nav-row">
+  <div class="menu-item nav-row"><span class="nav-ico"></span><span class="nav-title"></span></div>
+</template>
+
+<template id="tpl-ov-card">
+  <div class="ov-card" tabindex="0">
+    <div class="ov-thumb">
+      <button class="ov-close" aria-label="Close Tab"><svg class="icon xs"><use href="#i-stop"/></svg></button>
+      <img class="ov-img" alt="">
+      <div class="ov-placeholder"></div>
+    </div>
+    <div class="ov-meta"><span class="ov-fav"></span><span class="ov-title"></span></div>
+  </div>
+</template>
+
+<template id="tpl-dl-item">
+  <div class="dl-item">
+    <div class="dl-icon"><svg class="icon"><use href="#i-pdf"/></svg></div>
+    <div class="dl-info">
+      <div class="dl-name"></div>
+      <div class="dl-bar"><i></i></div>
+      <div class="dl-status"></div>
+    </div>
+    <div class="dl-actions">
+      <button class="icon-btn dl-pause" title="Pause" aria-label="Pause"><svg class="icon xs"><use href="#i-pause"/></svg></button>
+      <button class="icon-btn dl-cancel" title="Cancel" aria-label="Cancel"><svg class="icon xs"><use href="#i-stop"/></svg></button>
+      <button class="icon-btn dl-open" title="Open" aria-label="Open"><svg class="icon xs"><use href="#i-open"/></svg></button>
+      <button class="icon-btn dl-show" title="Show in Folder" aria-label="Show in Folder"><svg class="icon xs"><use href="#i-folder"/></svg></button>
+      <button class="icon-btn dl-remove" title="Remove from List" aria-label="Remove"><svg class="icon xs"><use href="#i-trash"/></svg></button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-menu-item">
+  <div class="menu-item"><span class="mi-check"></span><span class="mi-label"></span><span class="kbd"></span></div>
+</template>
+
+<script src="renderer.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "name": "safari-for-windows",
+  "productName": "Safari",
+  "version": "1.0.0",
+  "description": "A pixel-faithful macOS Sequoia Safari clone for Windows, built on Electron.",
+  "main": "main.js",
+  "author": "Safari for Windows",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "pack": "electron-builder --dir --win",
+    "dist": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.safariforwindows.app",
+    "productName": "Safari",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "styles.css",
+      "renderer.js",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": ["nsis", "portable"]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false
+    }
+  }
+}
